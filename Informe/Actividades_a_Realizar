@@ -1,0 +1,14 @@
+- Evaluar las alternativas mecánicas para la manipulación del cubo (sistemas de 6 motores paso a paso, 4 pinzas con 8 servomotores, y sistema de 2 servomotores con base giratoria) y seleccionar una de ellas.
+- Investigar y validar el hardware principal (microcontrolador, sensor de visión, actuadores e interfaz) a ser utilizado.
+- Asignar estratégicamente los pines del microcontrolador para evitar conflictos entre periféricos.
+- Estructurar los dominios de alimentación (+12V, +6V, +5V y +3.3V) y protocolos de comunicación (Bus I2C para la LCD, Bus paralelo DVP de 8 bits para la cámara, y señales PWM para actuadores).
+- Diseñar el diagrama de bloques de todo el sistema especificando las alimentaciones y protocolos de comunicacion.
+- Realizar el esquemático de los circuitos lógicos y de potencia.
+- Seleccionar las huellas físicas reales para cada componente electrónico.
+- Trazar las pistas separando la etapa de control de la etapa de potencia, aplicando cálculos de ancho de pista para el manejo de corrientes altas de los servomotores y minimización de ruido electromagnético.
+- Verificar el ruteo cumpliendo con los requerimientos mínimos y máximos de manufactura exigidos por JLCPCB.
+- Generar los archivos gerber, enviar a fabricar en JLCPCB y adquisición de componentes electrónicos específicos mediante distribuidores como Mouser Electronics.
+- Soldar de componentes SMD y Through-Hole en la placa PCB recibida.
+- Realizar el testeo de cortocircuitos y verificación de niveles de tensión (+5V y +3.3V) en vacío.
+- Montar los actuadores, interfaces y periféricos.
+- Probar el funcionamiento de cada uno.

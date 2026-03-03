@@ -10,13 +10,13 @@
   + Pines: 
     *VSS: GND 
     *VDD: 5V
-    *Vo: potenciometro 
-    *RS: GPIO
-    *RW: GND
-    *E: GPIO
-    *D0 - D7: GPIO
+    *Vo: potenciometro (5V y GND en los extremos)
+    *RS: PCF8574
+    *RW: PCF8574
+    *E: PCF8574
+    *D4 - D7: PCF8574
     *A: resistencia 220ohm y 5V 
-    *K: GND
+    *K: colector del transistor S8050 (base a PCF8574 con resistencia 4,7kohm a 5V, y emisor a GND)
 
 - Camara OV5640: (1)
   + Voltaje de operación: 3.3V

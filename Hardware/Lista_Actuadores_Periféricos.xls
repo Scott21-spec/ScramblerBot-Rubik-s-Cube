@@ -1,13 +1,18 @@
-- Servomotores MG996R:
-  + Voltaje de operación: 
-  + Corriente 
+- Servomotores MG996R: (2)
+  + Voltaje de operación: 6V
+  + Corriente: 500mA - 900mA
+  + Corriente maxima: 2.5A
+  + Pines: 6V - PWM - GND
+
+- Pantalla LCD 20x4: (1)
+
+- Camara OV5640: (1)
 
 
-
-- MCU ESP32-S3-WROOM-1-N8R8:
-  + Clock: 40 MHz
-  + Voltaje: 3.3 V
-  + Corriente: 500 mA
+- MCU ESP32-S3-WROOM-1-N8R8: (1)
+  + Clock: 40MHz
+  + Voltaje: 3.3V
+  + Corriente: 500mA
   + Flash: 8MB Quad SPI
   + SPRAM: 8MB Octal SPI
   + Pines:

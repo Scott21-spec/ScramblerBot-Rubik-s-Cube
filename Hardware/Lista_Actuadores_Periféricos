@@ -5,9 +5,23 @@
   + Pines: 6V - PWM - GND
 
 - Pantalla LCD 20x4: (1)
+  + Voltaje de operación: 5V
+  + Corriente: 60mA
+  + Pines: 
+    *VSS: GND 
+    *VDD: 5V
+    *Vo: potenciometro 
+    *RS: GPIO
+    *RW: GND
+    *E: GPIO
+    *D0 - D7: GPIO
+    *A: resistencia 220ohm y 5V 
+    *K: GND
 
 - Camara OV5640: (1)
-
+  + Voltaje de operación: 3.3V
+  + Corriente: 200mA
+  + Pines:
 
 - MCU ESP32-S3-WROOM-1-N8R8: (1)
   + Clock: 40MHz

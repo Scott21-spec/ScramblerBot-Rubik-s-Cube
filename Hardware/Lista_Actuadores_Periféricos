@@ -18,10 +18,10 @@
     *A: resistencia 220ohm y 5V 
     *K: colector del transistor S8050 (base a PCF8574 con resistencia 4,7kohm a 5V, y emisor a GND)
 
-- Camara OV5640: (1)
+- Modulo Arducam OV2640: (1)
   + Voltaje de operación: 3.3V
   + Corriente: 200mA
-  + Pines:
+  + Pines: SCK, MOSI, MISO, CS, VCC, GND, SDA, SCL
 
 - MCU ESP32-S3-WROOM-1-N8R8: (1)
   + Clock: 40MHz

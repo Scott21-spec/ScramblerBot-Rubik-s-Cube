@@ -17,13 +17,23 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 109.22) (xy 137.16 109.22)
+			(xy 134.62 118.11) (xy 137.16 118.11)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "10a40834-55ef-499b-92bd-1479d7ba2d5b")
+		(uuid "1be68af9-fe27-4f68-bcb5-717fb861493c")
+	)
+	(wire
+		(pts
+			(xy 125.73 128.27) (xy 132.08 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e495246-fd93-4bfc-bdb5-1a9dbcedf4e8")
 	)
 	(wire
 		(pts
@@ -47,6 +57,36 @@
 	)
 	(wire
 		(pts
+			(xy 110.49 104.14) (xy 110.49 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3d6fe77f-104f-4423-9baa-2da3df7fc143")
+	)
+	(wire
+		(pts
+			(xy 105.41 104.14) (xy 105.41 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4066e207-39e8-4b96-ac1d-715d08a26e0c")
+	)
+	(wire
+		(pts
+			(xy 125.73 124.46) (xy 129.54 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40e842aa-65dd-45ab-aea1-fbea186442f3")
+	)
+	(wire
+		(pts
 			(xy 143.51 80.01) (xy 143.51 88.9)
 		)
 		(stroke
@@ -54,6 +94,16 @@
 			(type default)
 		)
 		(uuid "474cecd5-fd13-462f-a5e9-6779dff35f8f")
+	)
+	(wire
+		(pts
+			(xy 100.33 104.14) (xy 100.33 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4be52ea9-6bd2-4f9a-b9f6-01afec8be800")
 	)
 	(wire
 		(pts
@@ -74,6 +124,16 @@
 			(type default)
 		)
 		(uuid "504c9eb4-640b-499e-b8c6-a8358e4b8b59")
+	)
+	(wire
+		(pts
+			(xy 127 106.68) (xy 137.16 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51c8792d-2979-43a8-9315-afce8b0ba2d7")
 	)
 	(wire
 		(pts
@@ -127,23 +187,43 @@
 	)
 	(wire
 		(pts
-			(xy 125.73 101.6) (xy 137.16 101.6)
+			(xy 129.54 124.46) (xy 129.54 110.49)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7c54672a-29eb-47e0-8a46-0defca6fdabc")
+		(uuid "73f39593-a01e-4fc6-9bac-2cf172681501")
 	)
 	(wire
 		(pts
-			(xy 125.73 105.41) (xy 137.16 105.41)
+			(xy 125.73 132.08) (xy 134.62 132.08)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "802831f9-db4c-4377-9930-7795e9165dae")
+		(uuid "75f60d5b-c27b-4ca9-8b9e-a9304f9ff1a3")
+	)
+	(wire
+		(pts
+			(xy 137.16 114.3) (xy 132.08 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76fcde4a-b20e-48fa-bed6-11abbb0977ef")
+	)
+	(wire
+		(pts
+			(xy 132.08 114.3) (xy 132.08 128.27)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77687677-bdd3-4aaa-9e1d-b2171c5f901e")
 	)
 	(wire
 		(pts
@@ -177,6 +257,26 @@
 	)
 	(wire
 		(pts
+			(xy 125.73 120.65) (xy 127 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9220f943-510a-4c4f-9fe4-d95136bcefb6")
+	)
+	(wire
+		(pts
+			(xy 134.62 132.08) (xy 134.62 118.11)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "93c2a5c4-a456-47e4-8bd5-5f3f60b34338")
+	)
+	(wire
+		(pts
 			(xy 208.28 69.85) (xy 208.28 80.01)
 		)
 		(stroke
@@ -194,16 +294,6 @@
 			(type default)
 		)
 		(uuid "9c639d09-2a0d-4ef8-a59b-7253e9f59cff")
-	)
-	(wire
-		(pts
-			(xy 125.73 113.03) (xy 137.16 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a823ecdf-aa42-46ce-a8a7-239e5be48733")
 	)
 	(wire
 		(pts
@@ -267,6 +357,16 @@
 	)
 	(wire
 		(pts
+			(xy 115.57 104.14) (xy 115.57 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7ff06a1-e39b-4302-8917-f38e1fc1d149")
+	)
+	(wire
+		(pts
 			(xy 134.62 77.47) (xy 148.59 77.47)
 		)
 		(stroke
@@ -284,6 +384,26 @@
 			(type default)
 		)
 		(uuid "e5814750-9e33-4804-825d-9f02eae5267c")
+	)
+	(wire
+		(pts
+			(xy 127 120.65) (xy 127 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee8cb490-39f5-49fb-8a71-be35c2d917bc")
+	)
+	(wire
+		(pts
+			(xy 129.54 110.49) (xy 137.16 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f087d9eb-ae22-4ae5-b8fb-82371667aea8")
 	)
 	(sheet
 		(at 162.56 44.45)
@@ -349,13 +469,134 @@
 		)
 	)
 	(sheet
-		(at 97.79 93.98)
-		(size 27.94 26.67)
+		(at 97.79 113.03)
+		(size 27.94 25.4)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+			(color 255 2 154 1)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0655d80b-ec39-4060-bfcf-9e46930fb85c")
+		(property "Sheetname" "Level Shifter PWM"
+			(at 97.79 141.224 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Level_Shifter_PWM.kicad_sch"
+			(at 97.79 142.748 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "PWM1" input
+			(at 125.73 120.65 0)
+			(uuid "97aab71d-deb1-4b36-a6e0-e5e0ba03a7ae")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWM2" input
+			(at 125.73 124.46 0)
+			(uuid "b9760e5c-a443-4eb6-8f56-12b59fa6a9cf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWM3" input
+			(at 125.73 128.27 0)
+			(uuid "54d6931f-ad43-42af-868c-613727e02f75")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWM4" input
+			(at 125.73 132.08 0)
+			(uuid "4b6239bf-4483-4b61-aab7-72b5a91c4832")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWM_Servo1" output
+			(at 100.33 113.03 90)
+			(uuid "4542dedf-9d9b-448a-a4ee-4444ae249377")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWM_Servo2" output
+			(at 105.41 113.03 90)
+			(uuid "017ea12f-7771-49aa-b6c2-4df13ef4c602")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWM_Servo3" output
+			(at 110.49 113.03 90)
+			(uuid "cc1fad6c-8f03-44e0-8e62-d0d46a1be080")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "PWM_Servo4" output
+			(at 115.57 113.03 90)
+			(uuid "847e142e-2f47-4326-ae0b-749ab4d99541")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(instances
+			(project "ScramblerBot"
+				(path "/ca162c4b-e7f6-494c-9ea1-0d86ef4a8e44"
+					(page "8")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 97.79 80.01)
+		(size 27.94 24.13)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(stroke
 			(width 0.1524)
 			(type solid)
@@ -365,7 +606,7 @@
 		)
 		(uuid "0bfdb5c0-68d8-49ec-ac8d-698a51ef3bdb")
 		(property "Sheetname" "Servomotors"
-			(at 97.79 93.2684 0)
+			(at 97.79 79.2984 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -374,7 +615,7 @@
 			)
 		)
 		(property "Sheetfile" "Servomotors.kicad_sch"
-			(at 97.79 121.2346 0)
+			(at 97.79 75.438 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -383,43 +624,43 @@
 			)
 		)
 		(pin "PWM_Servo1" input
-			(at 125.73 101.6 0)
+			(at 100.33 104.14 270)
 			(uuid "509f1aa4-edd1-44fe-b53d-cbfdf06e3949")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(pin "PWM_Servo2" input
-			(at 125.73 105.41 0)
+			(at 105.41 104.14 270)
 			(uuid "26b318da-9354-4670-9bc4-1422c73bbd6b")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(pin "PWM_Servo3" input
-			(at 125.73 109.22 0)
+			(at 110.49 104.14 270)
 			(uuid "8c7591a6-7c04-4fbf-84f7-cbe6646f07e7")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(pin "PWM_Servo4" input
-			(at 125.73 113.03 0)
+			(at 115.57 104.14 270)
 			(uuid "071b16a6-740b-489f-a98d-203bb64599e8")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(instances
@@ -447,7 +688,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "8c3de3cc-826d-4aa1-9e27-39adbb14f87d")
-		(property "Sheetname" "Level Shifter"
+		(property "Sheetname" "Level Shifter LCD"
 			(at 187.96 79.2984 0)
 			(effects
 				(font
@@ -681,46 +922,6 @@
 				(justify right)
 			)
 		)
-		(pin "PWM_Servo1" output
-			(at 137.16 101.6 180)
-			(uuid "0cfd7753-2b48-415e-b430-b3996f61d943")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "PWM_Servo2" output
-			(at 137.16 105.41 180)
-			(uuid "35536b45-01e5-40a2-9cea-51e8de4c9758")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "PWM_Servo3" output
-			(at 137.16 109.22 180)
-			(uuid "65b25e89-5fd4-4d3c-8e67-512179052b6a")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(pin "PWM_Servo4" output
-			(at 137.16 113.03 180)
-			(uuid "c934536f-a672-4ed8-9b0e-84adf150845d")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "SCK" output
 			(at 151.13 88.9 90)
 			(uuid "528419ce-bdc3-436a-ae1e-99f3b004c22c")
@@ -789,6 +990,46 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "PWM1" output
+			(at 137.16 106.68 180)
+			(uuid "18e49944-129b-45f0-94a1-5f469129dcc3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PWM2" output
+			(at 137.16 110.49 180)
+			(uuid "0096b9f6-886b-4be8-b2ef-875fd7355f23")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PWM3" output
+			(at 137.16 114.3 180)
+			(uuid "116eab9c-6797-46e4-9d53-8a6f027a8e20")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "PWM4" output
+			(at 137.16 118.11 180)
+			(uuid "b4aecd34-84b8-4f5b-ad34-8b44d351755a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances

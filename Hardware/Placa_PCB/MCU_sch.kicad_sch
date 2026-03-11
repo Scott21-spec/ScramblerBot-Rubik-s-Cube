@@ -16,7 +16,7 @@
 		)
 		(uuid "059b4ff3-a45a-4889-aacd-bf4b623e6892")
 	)
-	(hierarchical_label "PWM_Servo4"
+	(hierarchical_label "PWM4"
 		(shape output)
 		(at 62.23 88.9 0)
 		(effects
@@ -38,7 +38,7 @@
 		)
 		(uuid "59a26d60-32ae-4c92-b595-f4b6d0ac4bc4")
 	)
-	(hierarchical_label "PWM_Servo1"
+	(hierarchical_label "PWM1"
 		(shape output)
 		(at 62.23 72.39 0)
 		(effects
@@ -60,7 +60,7 @@
 		)
 		(uuid "69f7e87b-5e38-4e71-8782-5f836b794072")
 	)
-	(hierarchical_label "PWM_Servo3"
+	(hierarchical_label "PWM3"
 		(shape output)
 		(at 62.23 82.55 0)
 		(effects
@@ -104,7 +104,7 @@
 		)
 		(uuid "cdd07f61-bcad-48fd-9c13-4e7e2d39fe80")
 	)
-	(hierarchical_label "PWM_Servo2"
+	(hierarchical_label "PWM2"
 		(shape output)
 		(at 62.23 77.47 0)
 		(effects

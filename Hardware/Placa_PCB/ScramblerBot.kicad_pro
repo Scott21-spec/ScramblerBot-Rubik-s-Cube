@@ -423,7 +423,7 @@
     ],
     [
       "8c3de3cc-826d-4aa1-9e27-39adbb14f87d",
-      "Level Shifter"
+      "Level Shifter LCD"
     ],
     [
       "bb166e8a-7d54-4ae8-a0b2-867dec2483b7",
@@ -436,6 +436,10 @@
     [
       "978087f4-bf8d-48ff-9a7b-a9e2b1e602ee",
       "Camara"
+    ],
+    [
+      "0655d80b-ec39-4060-bfcf-9e46930fb85c",
+      "Level Shifter PWM"
     ]
   ],
   "text_variables": {}

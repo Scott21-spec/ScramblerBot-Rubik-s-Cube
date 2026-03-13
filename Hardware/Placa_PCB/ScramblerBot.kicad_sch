@@ -37,6 +37,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 120.65) (xy 187.96 120.65)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e976bbb-e82f-4482-adb4-b7a75b7ea4a9")
+	)
+	(wire
+		(pts
 			(xy 148.59 77.47) (xy 148.59 88.9)
 		)
 		(stroke
@@ -137,6 +147,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 116.84) (xy 187.96 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51f5b959-15d2-42b1-8a18-1f4bc435f141")
+	)
+	(wire
+		(pts
 			(xy 137.16 76.2) (xy 151.13 76.2)
 		)
 		(stroke
@@ -157,6 +177,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 124.46) (xy 187.96 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "618caa81-d00e-44e1-82ef-2b62cfc21682")
+	)
+	(wire
+		(pts
 			(xy 132.08 69.85) (xy 132.08 78.74)
 		)
 		(stroke
@@ -174,16 +204,6 @@
 			(type default)
 		)
 		(uuid "63aec08f-162c-485a-ab2f-ed69c9c53825")
-	)
-	(wire
-		(pts
-			(xy 176.53 118.11) (xy 187.96 118.11)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73a23937-e6a6-4a12-8599-2ee4da707ef4")
 	)
 	(wire
 		(pts
@@ -334,16 +354,6 @@
 			(type default)
 		)
 		(uuid "d00b94d1-50eb-476d-86cc-84d83137cc2a")
-	)
-	(wire
-		(pts
-			(xy 176.53 121.92) (xy 187.96 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d2a757f1-be6b-4730-84a1-35f5b255e1aa")
 	)
 	(wire
 		(pts
@@ -799,16 +809,6 @@
 				(justify left)
 			)
 		)
-		(pin "MISO" input
-			(at 132.08 69.85 270)
-			(uuid "6c353f0f-cdc4-4ef0-8a61-0fc590639656")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
 		(pin "MOSI" input
 			(at 134.62 69.85 270)
 			(uuid "dd59af18-d2a6-4c6a-8893-5f58084bcbce")
@@ -842,6 +842,16 @@
 		(pin "SCL" input
 			(at 139.7 69.85 270)
 			(uuid "565742e5-2d7e-4034-9f6e-8e629ccb6f51")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "MISO" output
+			(at 132.08 69.85 270)
+			(uuid "781ad8ce-c4fa-488b-827f-6e88049a7af8")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -902,26 +912,6 @@
 				(justify right)
 			)
 		)
-		(pin "MISO" output
-			(at 146.05 88.9 90)
-			(uuid "6c86814f-dd6d-45de-bb7a-a850fee3d459")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(pin "MOSI" output
-			(at 148.59 88.9 90)
-			(uuid "bd0c0f91-d136-4cef-89af-4b0abb639ed1")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
 		(pin "SCK" output
 			(at 151.13 88.9 90)
 			(uuid "528419ce-bdc3-436a-ae1e-99f3b004c22c")
@@ -973,7 +963,7 @@
 			)
 		)
 		(pin "USB_D+" input
-			(at 176.53 118.11 0)
+			(at 176.53 116.84 0)
 			(uuid "9c77b084-f5e7-427f-9ebb-12f0ae07b217")
 			(effects
 				(font
@@ -983,7 +973,7 @@
 			)
 		)
 		(pin "USB_D-" input
-			(at 176.53 121.92 0)
+			(at 176.53 120.65 0)
 			(uuid "5dbce167-f1a1-4d2c-b0b6-ebb32f6260b4")
 			(effects
 				(font
@@ -1032,6 +1022,36 @@
 				(justify left)
 			)
 		)
+		(pin "LED_USB" input
+			(at 176.53 124.46 0)
+			(uuid "b0130d98-5727-42df-a33c-f32da8b8ad8b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "MOSI" output
+			(at 148.59 88.9 90)
+			(uuid "a8377158-28fd-4707-823f-36c932a13575")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "MISO" input
+			(at 146.05 88.9 90)
+			(uuid "e0d9a39c-dc85-48ed-be70-a27a1dc4a9ff")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "ScramblerBot"
 				(path "/ca162c4b-e7f6-494c-9ea1-0d86ef4a8e44"
@@ -1076,7 +1096,7 @@
 			)
 		)
 		(pin "USB_D+" output
-			(at 187.96 118.11 180)
+			(at 187.96 116.84 180)
 			(uuid "70609c50-4e7e-4528-8812-bc6df788e07e")
 			(effects
 				(font
@@ -1086,8 +1106,18 @@
 			)
 		)
 		(pin "USB_D-" output
-			(at 187.96 121.92 180)
+			(at 187.96 120.65 180)
 			(uuid "95f5e441-2287-4187-a16e-52c36cf6fbea")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "LED_USB" input
+			(at 187.96 124.46 180)
+			(uuid "0f39c68c-5573-4d3c-aaa4-84531badfd0b")
 			(effects
 				(font
 					(size 1.27 1.27)

@@ -1633,7 +1633,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8359c764-e75f-4b63-8a0b-6a5bd2cde4b1")
-		(property "Reference" "U2"
+		(property "Reference" "U3"
 			(at 111.76 73.66 0)
 			(effects
 				(font
@@ -1723,7 +1723,7 @@
 		(instances
 			(project ""
 				(path "/ca162c4b-e7f6-494c-9ea1-0d86ef4a8e44/0655d80b-ec39-4060-bfcf-9e46930fb85c"
-					(reference "U2")
+					(reference "U3")
 					(unit 1)
 				)
 			)
@@ -1757,7 +1757,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 187.6552 92.71 0)
 			(effects
 				(font
@@ -1893,7 +1893,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 202.8952 92.71 0)
 			(effects
 				(font

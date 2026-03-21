@@ -1,5 +1,5 @@
--
--
--
--
--
+- Evaluar las alternativas mecánicas para la manipulación del cubo.
+- Investigar y validar el hardware principal para la alternativa elegida.
+- Realizar el diagrama de bloques del sistema con sus protocolos de comunicación y alimentación correspondiente. 
+- Asignar estratégicamente los pines del microcontrolador para PWM, I2C y SPI.
+- Realizar el esquematico y el ruteo de pistas del PCB siguiendo los requerimientos del servomotor.

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrambler Bot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Barra Lateral -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="logo_final.png" alt="Scrambler Bot" class="logo-img">
+        </div>
+        <nav class="menu">
+            <button class="nav-btn active" id="btn-resolver" onclick="setMode('resolver')">
+                <span class="dot green-dot"></span> RESOLVER
+            </button>
+            <button class="nav-btn" id="btn-mezclar" onclick="setMode('mezclar')">
+                <span class="dot orange-dot"></span> MEZCLAR
+            </button>
+            <button class="nav-btn" id="btn-ajustes" onclick="setMode('ajustes')">
+                <span class="dot yellow-dot"></span> AJUSTES
+            </button>
+            <button class="nav-btn" id="btn-about" onclick="setMode('about')">
+                <span class="dot blue-dot"></span> ABOUT US
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- CABECERA: Ahora agrupada y centrada -->
+        <header class="topbar">
+            <div class="mode-title-wrapper">
+                <span class="mode-title">MODO ACTUAL:</span> 
+                <span id="current-mode-text" class="text-green">RESOLVER</span>
+            </div>
+            <button id="btn-historial" class="historial-btn">
+                <span class="icon">📄</span> Ver Historial
+            </button>
+            <div class="status-indicator">
+                <span id="esp-status-dot" class="dot red-dot"></span> 
+                <span id="esp-status-text">DESCONECTADO</span>
+            </div>
+        </header>
+
+        <!-- Cuadro con borde de Neón -->
+        <div class="content-box" id="content-box">
+            
+            <section class="views-container">
+                <!-- VISTA: RESOLVER -->
+                <div id="view-resolver" class="view active">
+                    <div class="cube-container" id="cube-viewer-resolver">
+                        <div class="scene">
+                            <div class="cube">
+                                <div class="cube__face cube__face--front">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--back">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--right">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--left">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--top">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--bottom">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- NUEVO: Botón para desplegar 2D -->
+                        <button class="unfold-btn" onclick="toggleUnfold()">↕️</button>
+                    </div>
+                    
+                    <div class="controls-panel">
+                        <div class="info-box">
+                            <h3>Movimientos a Realizar:</h3>
+                            <p id="moves-list-resolver" class="moves-text"></p>
+                            <div class="progress-container">
+                                <span class="progress-text" id="progress-text-resolver">0 / 0</span>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill green-fill" id="progress-fill-resolver" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="action-btn btn-green" onclick="startProcess('resolver')">▶ INICIAR</button>
+                            <button class="action-btn btn-red" onclick="stopProcess()">|| DETENER</button>
+                            <button class="action-btn btn-cyan" onclick="viewProcess()">📄 VER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VISTA: MEZCLAR -->
+                <div id="view-mezclar" class="view">
+                    <!-- Botones de Acción (Lado Izquierdo) -->
+                    <div class="scramble-controls">
+                        <button class="big-btn" onclick="downloadWCA()">📁 DESCARGAR</button>
+                        <button class="big-btn" onclick="generateWCA()">🎲 GENERAR</button>
+                    </div>
+                    
+                    <!-- Panel de Información (Lado Derecho) -->
+                    <div class="controls-panel">
+                        <div class="info-box">
+                            <h3>Secuencia Leida:</h3>
+                            <p id="moves-list-mezclar" class="moves-text"></p>
+                            <div class="progress-container">
+                                <span class="progress-text" id="progress-text-mezclar">0 / 0</span>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill orange-fill" id="progress-fill-mezclar" style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="action-btn btn-green" onclick="startProcess('mezclar')">▶ INICIAR</button>
+                            <button class="action-btn btn-red" onclick="stopProcess()">|| DETENER</button>
+                            <button class="action-btn btn-cyan" onclick="viewPDF()">📄 VER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VISTA: AJUSTES -->
+                <div id="view-ajustes" class="view">
+                    
+                    <!-- Contenedor del cubo 3D -->
+                    <div class="cube-container">
+                        <div class="scene">
+                            <div class="cube">
+                                <div class="cube__face cube__face--front">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--back">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--right">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--left">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--top">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                                <div class="cube__face cube__face--bottom">
+                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Botón Iniciar Circular -->
+                        <button class="start-circular-btn" onclick="startProcess('ajustes')">▶</button>
+
+                        <!-- Botón para desplegar 2D -->
+                        <button class="unfold-btn" onclick="toggleUnfold()">↕️</button>
+                    </div>
+                    
+                    <!-- Panel de 12 Botones Manuales (4 columnas) -->
+                    <div class="manual-controls">
+                        <button class="manual-btn" onclick="sendManualMove('F')">F</button>
+                        <button class="manual-btn" onclick="sendManualMove('F\'')">F'</button>
+                        <button class="manual-btn" onclick="sendManualMove('R')">R</button>
+                        <button class="manual-btn" onclick="sendManualMove('R\'')">R'</button>
+                        
+                        <button class="manual-btn" onclick="sendManualMove('B')">B</button>
+                        <button class="manual-btn" onclick="sendManualMove('B\'')">B'</button>
+                        <button class="manual-btn" onclick="sendManualMove('L')">L</button>
+                        <button class="manual-btn" onclick="sendManualMove('L\'')">L'</button>
+                        
+                        <button class="manual-btn" onclick="sendManualMove('U')">U</button>
+                        <button class="manual-btn" onclick="sendManualMove('U\'')">U'</button>
+                        <button class="manual-btn" onclick="sendManualMove('D')">D</button>
+                        <button class="manual-btn" onclick="sendManualMove('D\'')">D'</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="terminal-wrapper">
+                <div class="terminal-bar">
+                    <p id="terminal-output">12/08/2026 18:30 - [STATUS]: ENVIADO A ESP32</p>
+                </div>
+            </footer>
+            
+            <!-- NUEVO: Ventana Modal del Cubo 2D Desplegado -->
+            <div id="unfold-modal" class="modal hidden">
+                <div class="modal-content">
+                    <button class="close-btn" onclick="toggleUnfold()">✖</button>
+                    <div class="unfolded-cube">
+                        <div class="face-2d face-up">
+                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        </div>
+                        <div class="face-2d face-left">
+                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        </div>
+                        <div class="face-2d face-front">
+                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        </div>
+                        <div class="face-2d face-right">
+                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        </div>
+                        <div class="face-2d face-back">
+                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        </div>
+                        <div class="face-2d face-down">
+                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

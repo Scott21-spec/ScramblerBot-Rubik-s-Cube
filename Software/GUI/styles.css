@@ -1,0 +1,261 @@
+:root {
+    --bg-dark: #000000; /* Todo el exterior negro */
+    --bg-panel: #2A2D35;
+    --bg-inside-box: #121216; /* Color de fondo dentro del neón */
+    --text-main: #FFFFFF;
+    --neon-resolver: #00FF66;
+    --neon-mezclar: #FF6600;
+    --neon-ajustes: #FFEE00;
+    --neon-about: #00E5FF;
+    --disconnected: #FF0055;
+    --active-neon: #00FF66;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
+
+body { background-color: var(--bg-dark); color: var(--text-main); display: flex; height: 100vh; overflow: hidden; }
+
+/* Sidebar */
+.sidebar { width: 300px; background-color: var(--bg-dark); display: flex; flex-direction: column; padding: 0; }
+.menu { display: flex; flex-direction: column; gap: 20px; padding: 20px 30px; margin-top: 10px;}
+
+/* --- CORRECCIÓN LOGO --- */
+.logo-container { 
+    width: 100%; height: 120px; 
+    display: flex; align-items: center; justify-content: center;
+    padding: 10px; /* Margen de seguridad */
+}
+
+.logo-img { 
+    max-width: 100%; max-height: 100%; 
+    object-fit: contain; /* Esto evita que el logo se corte, manteniendo sus proporciones */
+}
+
+.nav-btn {
+    background-color: var(--bg-panel); color: #fff; border: 1px solid transparent; padding: 20px; text-align: left;
+    font-size: 18px; cursor: pointer; display: flex; align-items: center; gap: 15px; transition: 0.3s; font-style: italic;
+}
+.nav-btn.active { box-shadow: 0 0 12px var(--active-neon); border-color: var(--active-neon); }
+.dot { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.green-dot { background-color: var(--neon-resolver); }
+.orange-dot { background-color: var(--neon-mezclar); }
+.yellow-dot { background-color: var(--neon-ajustes); }
+.blue-dot { background-color: var(--neon-about); }
+.red-dot { background-color: var(--disconnected); }
+
+/* Main Content */
+.main-content { flex: 1; display: flex; flex-direction: column; padding: 0 40px 20px 40px; }
+
+/* Topbar Ajustada */
+/* --- CORRECCIÓN TOPBAR --- */
+.topbar { 
+    display: flex; 
+    justify-content: center; /* Agrupa todo en el centro */
+    align-items: center; 
+    gap: 50px; /* Separación entre Modo, Historial y Desconectado */
+    height: 120px; 
+}
+.top-spacer { flex: 1; }
+.mode-title-wrapper { display: flex; align-items: center; gap: 10px; }
+.mode-title { font-size: 24px; font-weight: bold; text-decoration: underline; }
+#current-mode-text { font-size: 26px; font-weight: bold; text-transform: uppercase; }
+.text-green { color: var(--neon-resolver); text-shadow: 0 0 5px var(--neon-resolver); }
+.top-controls { flex: 1; display: flex; justify-content: flex-end; align-items: center; gap: 40px; }
+.historial-btn { 
+    background: none; border: none; color: white; cursor: pointer; 
+    text-decoration: none; /* Quitamos el subrayado */
+    font-size: 18px; display: flex; align-items: center; gap: 5px; font-weight: bold;
+}
+.historial-btn:hover { color: #ccc; }
+.status-indicator { font-size: 18px; font-weight: bold; display: flex; align-items: center; gap: 10px;}
+
+
+/* Content Box (Caja de Neón) */
+.content-box { 
+    background-color: var(--bg-inside-box);
+    flex: 1; border: 2px solid var(--active-neon); transition: border-color 0.3s; 
+    display: flex; flex-direction: column; padding: 30px; position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.1);
+}
+
+/* Views */
+.views-container { flex: 1; display: flex; align-items: center; justify-content: center; }
+.view { display: none; height: 100%; width: 100%; align-items: center; justify-content: space-evenly; gap: 40px; }
+.view.active { display: flex; }
+.hidden { display: none !important; }
+
+/* Contenedores */
+.cube-container { background-color: var(--bg-panel); border-radius: 30px; width: 400px; height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+/* --- BOTÓN PARA DESPLEGAR 2D --- */
+.cube-container { position: relative; } /* Necesario para ubicar el botón */
+.controls-panel { display: flex; flex-direction: column; gap: 30px; width: 450px; }
+.info-box { background-color: #7d818a; padding: 25px; border-radius: 5px; color: black; height: 250px; display: flex; flex-direction: column; justify-content: space-between; border-right: 5px solid #555; border-bottom: 5px solid #555;}
+.info-box h3 { font-size: 22px; text-decoration: underline; margin-bottom: 10px; font-weight: bold;}
+.progress-container { margin-top: auto; text-align: right;}
+.progress-text { font-weight: bold; color: var(--disconnected); font-size: 18px; }
+.progress-bar-bg { width: 100%; height: 15px; background: #000; border: 2px solid black; border-radius: 8px; overflow: hidden; margin-top: 5px;}
+.progress-bar-fill { height: 100%; transition: width 0.3s; }
+.green-fill { background-color: var(--neon-resolver); }
+.orange-fill { background-color: var(--neon-mezclar); }
+
+/* Botones */
+.action-buttons { display: flex; gap: 15px; }
+.action-btn { padding: 15px 20px; border: 2px solid #111; border-radius: 10px; font-weight: bold; font-size: 18px; color: white; cursor: pointer; flex: 1; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+.btn-green { background-color: #00b84c; }
+.btn-red { background-color: #d10000; }
+.btn-cyan { background-color: #00bcd4; flex: 0.4; }
+
+.scramble-controls { display: flex; flex-direction: column; gap: 30px; justify-content: center; height: 400px; width: 400px;}
+.big-btn { padding: 40px; font-size: 28px; background-color: var(--bg-panel); color: white; border: 2px solid #555; border-radius: 15px; cursor: pointer; font-weight: bold; }
+.scramble-controls.shrunk { flex-direction: row; height: auto; }
+.scramble-controls.shrunk .big-btn { padding: 15px 25px; font-size: 18px; }
+
+.manual-controls { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); /* 4 Columnas para agrupar los movimientos en pares */
+    gap: 15px; 
+    background: var(--bg-panel); 
+    padding: 30px; 
+    border-radius: 15px; 
+}
+.manual-btn { padding: 25px; font-size: 24px; font-weight: bold; background: #555; color: white; border: 2px solid #333; border-radius: 10px; cursor: pointer; }
+.manual-btn:hover { background: #777; }
+
+/* Terminal */
+.terminal-wrapper { background-color: #000; padding: 3px; width: 100%; margin-top: 20px; }
+.terminal-bar { background-color: #3a3d45; border: 2px solid #FFF; padding: 15px 25px; }
+#terminal-output { font-weight: 900; font-size: 16px; color: #FFF; }
+
+/* --- DISEÑO CUBO RUBIK REALISTA --- */
+.scene { width: 180px; height: 180px; perspective: 800px; cursor: grab; }
+.scene:active { cursor: grabbing; }
+/* El cubo arranca en una rotación base, sin animación CSS */
+.cube { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transform: rotateX(-20deg) rotateY(-45deg); }
+
+/* Las caras del cubo armadas como CSS Grid */
+.cube__face { 
+    position: absolute; width: 180px; height: 180px; 
+    background: #000; border: 4px solid #000; border-radius: 6px;
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); gap: 4px; /* Líneas negras */
+}
+
+/* Colores de las piezas (Stickers) */
+.sticker { width: 100%; height: 100%; border-radius: 3px; }
+.cube__face--front .sticker { background-color: #00FF00; }  /* Verde */
+.cube__face--back .sticker  { background-color: #0000FF; }  /* Azul */
+.cube__face--right .sticker { background-color: #FF0000; }  /* Rojo */
+.cube__face--left .sticker  { background-color: #FF8800; }  /* Naranja */
+.cube__face--top .sticker   { background-color: #FFFFFF; }  /* Blanco */
+.cube__face--bottom .sticker{ background-color: #FFFF00; }  /* Amarillo */
+
+/* Posicionamiento en el espacio 3D */
+.cube__face--front  { transform: rotateY(  0deg) translateZ(90px); } 
+.cube__face--back   { transform: rotateY(180deg) translateZ(90px); } 
+.cube__face--right  { transform: rotateY( 90deg) translateZ(90px); } 
+.cube__face--left   { transform: rotateY(-90deg) translateZ(90px); } 
+.cube__face--top    { transform: rotateX( 90deg) translateZ(90px); } 
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(90px); }
+
+
+.unfold-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: var(--active-neon);
+    border: 2px solid #000;
+    cursor: pointer;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px var(--active-neon);
+    transition: transform 0.2s;
+}
+.unfold-btn:hover { transform: scale(1.1); }
+
+/* --- VENTANA MODAL 2D --- */
+.modal {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100;
+    border-radius: inherit; /* Respeta los bordes si los hay */
+}
+.modal.hidden { display: none; }
+
+.modal-content {
+    background: var(--bg-panel);
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    border: 2px solid var(--active-neon);
+    box-shadow: 0 0 20px var(--active-neon);
+}
+
+.close-btn {
+    position: absolute; top: 10px; right: 15px;
+    background: transparent; color: white; border: none; 
+    font-size: 24px; cursor: pointer; font-weight: bold;
+}
+.close-btn:hover { color: var(--disconnected); }
+
+/* --- GRID DEL CUBO DESPLEGADO 2D --- */
+.unfolded-cube {
+    display: grid;
+    grid-template-columns: 80px 80px 80px 80px;
+    grid-template-rows: 80px 80px 80px;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.face-2d {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 3px;
+    background: #000;
+    border: 4px solid #000;
+    border-radius: 4px;
+}
+
+/* Ubicación en la cruz 2D */
+.face-up    { grid-column: 2; grid-row: 1; }
+.face-left  { grid-column: 1; grid-row: 2; }
+.face-front { grid-column: 2; grid-row: 2; }
+.face-right { grid-column: 3; grid-row: 2; }
+.face-back  { grid-column: 4; grid-row: 2; }
+.face-down  { grid-column: 2; grid-row: 3; }
+
+/* Colores de las caras 2D */
+.face-up .sticker    { background: #FFFFFF; } /* Blanco */
+.face-left .sticker  { background: #FF8800; } /* Naranja */
+.face-front .sticker { background: #00FF00; } /* Verde */
+.face-right .sticker { background: #FF0000; } /* Rojo */
+.face-back .sticker  { background: #0000FF; } /* Azul */
+.face-down .sticker  { background: #FFFF00; } /* Amarillo */
+
+/* --- BOTÓN INICIAR CIRCULAR (MODO AJUSTES) --- */
+.start-circular-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 75px; /* Lo separa 15px a la izquierda del botón de desplegar */
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #00b84c; /* Verde */
+    color: white;
+    border: 2px solid #000;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px #00b84c;
+    transition: transform 0.2s;
+}
+.start-circular-btn:hover { 
+    transform: scale(1.1); 
+}

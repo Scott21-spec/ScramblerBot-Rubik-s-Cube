@@ -101,4 +101,3 @@ def convertir_cadena(caras):
             cadena += posicion
 
     return cadena
-

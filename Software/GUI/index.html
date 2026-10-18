@@ -22,15 +22,12 @@
             <button class="nav-btn" id="btn-ajustes" onclick="setMode('ajustes')">
                 <span class="dot yellow-dot"></span> AJUSTES
             </button>
-            <button class="nav-btn" id="btn-about" onclick="setMode('about')">
-                <span class="dot blue-dot"></span> ABOUT US
-            </button>
         </nav>
     </aside>
 
     <!-- Contenido Principal -->
     <main class="main-content">
-        <!-- CABECERA: Ahora agrupada y centrada -->
+        <!-- Cabecera -->
         <header class="topbar">
             <div class="mode-title-wrapper">
                 <span class="mode-title">MODO ACTUAL:</span> 
@@ -45,45 +42,29 @@
             </div>
         </header>
 
-        <!-- Cuadro con borde de Neón -->
+        <!-- Contenido Principal -->
         <div class="content-box" id="content-box">
             
             <section class="views-container">
-                <!-- VISTA: RESOLVER -->
+                <!-- Modo: RESOLVER -->
                 <div id="view-resolver" class="view active">
+                    <!-- Contenedor de Cubo 3D -->
                     <div class="cube-container" id="cube-viewer-resolver">
                         <div class="scene">
-                            <div class="cube">
-                                <div class="cube__face cube__face--front">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--back">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--right">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--left">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--top">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--bottom">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                            </div>
+                            <!-- El nuevo motor 3D de 27 piezas reemplaza las caras planas -->
+                            <div class="cube-3d" id="cube-3d-resolver"></div>
                         </div>
-                        <!-- NUEVO: Botón para desplegar 2D -->
                         <button class="unfold-btn" onclick="toggleUnfold()">↕️</button>
                     </div>
                     
+                    <!-- Caja de Movimientos a Realizar -->
                     <div class="controls-panel">
                         <div class="info-box">
                             <h3>Movimientos a Realizar:</h3>
                             <p id="moves-list-resolver" class="moves-text"></p>
                             <div class="progress-container">
-                                <span class="progress-text" id="progress-text-resolver">0 / 0</span>
+                                <span class="progress-text" id="progress-text-resolver">0</span>
+                                <span class="moves-text" id="moves-text-resolver"> / 0</span>
                                 <div class="progress-bar-bg">
                                     <div class="progress-bar-fill green-fill" id="progress-fill-resolver" style="width: 0%;"></div>
                                 </div>
@@ -92,26 +73,35 @@
                         <div class="action-buttons">
                             <button class="action-btn btn-green" onclick="startProcess('resolver')">▶ INICIAR</button>
                             <button class="action-btn btn-red" onclick="stopProcess()">|| DETENER</button>
-                            <button class="action-btn btn-cyan" onclick="viewProcess()">📄 VER</button>
+                            <button class="action-btn btn-cyan" onclick="viewProcess('resolver')">📄 VER</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- VISTA: MEZCLAR -->
+                <!-- Modo: MEZCLAR -->
                 <div id="view-mezclar" class="view">
-                    <!-- Botones de Acción (Lado Izquierdo) -->
-                    <div class="scramble-controls">
-                        <button class="big-btn" onclick="downloadWCA()">📁 DESCARGAR</button>
+                    <!-- Botones de Accion -->
+                    <div class="scramble-controls" id="scramble-controls">
+                        <button class="big-btn" onclick="downloadWCA()">📁 SUBIR</button>
                         <button class="big-btn" onclick="generateWCA()">🎲 GENERAR</button>
                     </div>
+
+                    <!-- Cubo 3D de Mezclar (Aparece al cargar o generar secuencia) -->
+                    <div class="cube-container hidden" id="cube-viewer-mezclar">
+                        <div class="scene">
+                            <div class="cube-3d" id="cube-3d-mezclar"></div>
+                        </div>
+                        <button class="unfold-btn" onclick="toggleUnfold()">↕️</button>
+                    </div>
                     
-                    <!-- Panel de Información (Lado Derecho) -->
+                    <!-- Caja de Secuencia Leida -->
                     <div class="controls-panel">
                         <div class="info-box">
                             <h3>Secuencia Leida:</h3>
                             <p id="moves-list-mezclar" class="moves-text"></p>
                             <div class="progress-container">
-                                <span class="progress-text" id="progress-text-mezclar">0 / 0</span>
+                                <span class="progress-text" id="progress-text-mezclar">0</span>
+                                <span class="moves-text" id="moves-text-mezclar"> / 0</span>
                                 <div class="progress-bar-bg">
                                     <div class="progress-bar-fill orange-fill" id="progress-fill-mezclar" style="width: 0%;"></div>
                                 </div>
@@ -120,94 +110,122 @@
                         <div class="action-buttons">
                             <button class="action-btn btn-green" onclick="startProcess('mezclar')">▶ INICIAR</button>
                             <button class="action-btn btn-red" onclick="stopProcess()">|| DETENER</button>
-                            <button class="action-btn btn-cyan" onclick="viewPDF()">📄 VER</button>
+                            <button class="action-btn btn-cyan" onclick="viewProcess('mezclar')">📄 VER</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- VISTA: AJUSTES -->
+                <!-- Modo: AJUSTES -->
                 <div id="view-ajustes" class="view">
                     
                     <!-- Contenedor del cubo 3D -->
                     <div class="cube-container">
                         <div class="scene">
-                            <div class="cube">
-                                <div class="cube__face cube__face--front">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--back">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--right">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--left">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--top">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                                <div class="cube__face cube__face--bottom">
-                                    <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
-                                </div>
-                            </div>
+                            <div class="cube-3d" id="cube-3d-ajustes"></div>
                         </div>
                         
-                        <!-- Botón Iniciar Circular -->
+                        <!-- Boton Iniciar -->
                         <button class="start-circular-btn" onclick="startProcess('ajustes')">▶</button>
 
-                        <!-- Botón para desplegar 2D -->
+                        <!-- Boton para desplegar 2D -->
                         <button class="unfold-btn" onclick="toggleUnfold()">↕️</button>
                     </div>
                     
-                    <!-- Panel de 12 Botones Manuales (4 columnas) -->
-                    <div class="manual-controls">
-                        <button class="manual-btn" onclick="sendManualMove('F')">F</button>
-                        <button class="manual-btn" onclick="sendManualMove('F\'')">F'</button>
-                        <button class="manual-btn" onclick="sendManualMove('R')">R</button>
-                        <button class="manual-btn" onclick="sendManualMove('R\'')">R'</button>
-                        
-                        <button class="manual-btn" onclick="sendManualMove('B')">B</button>
-                        <button class="manual-btn" onclick="sendManualMove('B\'')">B'</button>
-                        <button class="manual-btn" onclick="sendManualMove('L')">L</button>
-                        <button class="manual-btn" onclick="sendManualMove('L\'')">L'</button>
-                        
-                        <button class="manual-btn" onclick="sendManualMove('U')">U</button>
-                        <button class="manual-btn" onclick="sendManualMove('U\'')">U'</button>
-                        <button class="manual-btn" onclick="sendManualMove('D')">D</button>
-                        <button class="manual-btn" onclick="sendManualMove('D\'')">D'</button>
+                    <!-- Panel de Ajuste de Servos -->
+                    <div class="servo-controls-panel">
+                        <!-- Cuadro del Servo Inferior -->
+                        <div class="servo-card">
+                            <h3>SERVO INFERIOR (Base)</h3>
+                            <div class="servo-pos-row">
+                                <button class="servo-btn" onclick="testServo('inferior', 'derecha')">DERECHA</button>
+                                <input type="range" class="servo-slider" id="slider-inf-der" min="0" max="180" value="0" oninput="syncAngle('inf-der', this.value)">
+                                <input type="number" class="servo-input" id="input-inf-der" min="0" max="180" value="0" oninput="syncAngle('inf-der', this.value)">
+                                <span class="deg-symbol">°</span>
+                            </div>
+
+                            <div class="servo-pos-row">
+                                <button class="servo-btn" onclick="testServo('inferior', 'centro')">CENTRO</button>
+                                <input type="range" class="servo-slider" id="slider-inf-cen" min="0" max="180" value="90" oninput="syncAngle('inf-cen', this.value)">
+                                <input type="number" class="servo-input" id="input-inf-cen" min="0" max="180" value="90" oninput="syncAngle('inf-cen', this.value)">
+                                <span class="deg-symbol">°</span>
+                            </div>
+
+                            <div class="servo-pos-row">
+                                <button class="servo-btn" onclick="testServo('inferior', 'izquierda')">IZQUIERDA</button>
+                                <input type="range" class="servo-slider" id="slider-inf-izq" min="0" max="180" value="180" oninput="syncAngle('inf-izq', this.value)">
+                                <input type="number" class="servo-input" id="input-inf-izq" min="0" max="180" value="180" oninput="syncAngle('inf-izq', this.value)">
+                                <span class="deg-symbol">°</span>
+                            </div>
+                        </div>
+
+                        <!-- Cuadro del Servo Superior -->
+                        <div class="servo-card">
+                            <h3>SERVO SUPERIOR (Brazo)</h3>
+                            <div class="servo-pos-row">
+                                <button class="servo-btn" onclick="testServo('superior', 'abajo')">ABAJO</button>
+                                <input type="range" class="servo-slider" id="slider-sup-aba" min="0" max="180" value="0" oninput="syncAngle('sup-aba', this.value)">
+                                <input type="number" class="servo-input" id="input-sup-aba" min="0" max="180" value="0" oninput="syncAngle('sup-aba', this.value)">
+                                <span class="deg-symbol">°</span>
+                            </div>
+
+                            <div class="servo-pos-row">
+                                <button class="servo-btn" onclick="testServo('superior', 'arriba')">ARRIBA</button>
+                                <input type="range" class="servo-slider" id="slider-sup-arr" min="0" max="180" value="90" oninput="syncAngle('sup-arr', this.value)">
+                                <input type="number" class="servo-input" id="input-sup-arr" min="0" max="180" value="90" oninput="syncAngle('sup-arr', this.value)">
+                                <span class="deg-symbol">°</span>
+                            </div>
+
+                            <div class="servo-pos-row">
+                                <button class="servo-btn" onclick="testServo('superior', 'volteo')">VOLTEO</button>
+                                <input type="range" class="servo-slider" id="slider-sup-vol" min="0" max="180" value="180" oninput="syncAngle('sup-vol', this.value)">
+                                <input type="number" class="servo-input" id="input-sup-vol" min="0" max="180" value="180" oninput="syncAngle('sup-vol', this.value)">
+                                <span class="deg-symbol">°</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <footer class="terminal-wrapper">
                 <div class="terminal-bar">
-                    <p id="terminal-output">12/08/2026 18:30 - [STATUS]: ENVIADO A ESP32</p>
+                    <p id="terminal-output">Bienvenido!! Conectando con ScramblerBot...</p>
                 </div>
             </footer>
             
-            <!-- NUEVO: Ventana Modal del Cubo 2D Desplegado -->
+            <!-- Ventana del Cubo 2D Desplegado -->
             <div id="unfold-modal" class="modal hidden">
                 <div class="modal-content">
                     <button class="close-btn" onclick="toggleUnfold()">✖</button>
                     <div class="unfolded-cube">
-                        <div class="face-2d face-up">
-                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        <div class="face-2d face-up" data-face="U">
+                            <div class="sticker" data-idx="0"></div><div class="sticker" data-idx="1"></div><div class="sticker" data-idx="2"></div>
+                            <div class="sticker" data-idx="3"></div><div class="sticker" data-idx="4"></div><div class="sticker" data-idx="5"></div>
+                            <div class="sticker" data-idx="6"></div><div class="sticker" data-idx="7"></div><div class="sticker" data-idx="8"></div>
                         </div>
-                        <div class="face-2d face-left">
-                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        <div class="face-2d face-left" data-face="L">
+                            <div class="sticker" data-idx="0"></div><div class="sticker" data-idx="1"></div><div class="sticker" data-idx="2"></div>
+                            <div class="sticker" data-idx="3"></div><div class="sticker" data-idx="4"></div><div class="sticker" data-idx="5"></div>
+                            <div class="sticker" data-idx="6"></div><div class="sticker" data-idx="7"></div><div class="sticker" data-idx="8"></div>
                         </div>
-                        <div class="face-2d face-front">
-                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        <div class="face-2d face-front" data-face="F">
+                            <div class="sticker" data-idx="0"></div><div class="sticker" data-idx="1"></div><div class="sticker" data-idx="2"></div>
+                            <div class="sticker" data-idx="3"></div><div class="sticker" data-idx="4"></div><div class="sticker" data-idx="5"></div>
+                            <div class="sticker" data-idx="6"></div><div class="sticker" data-idx="7"></div><div class="sticker" data-idx="8"></div>
                         </div>
-                        <div class="face-2d face-right">
-                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        <div class="face-2d face-right" data-face="R">
+                            <div class="sticker" data-idx="0"></div><div class="sticker" data-idx="1"></div><div class="sticker" data-idx="2"></div>
+                            <div class="sticker" data-idx="3"></div><div class="sticker" data-idx="4"></div><div class="sticker" data-idx="5"></div>
+                            <div class="sticker" data-idx="6"></div><div class="sticker" data-idx="7"></div><div class="sticker" data-idx="8"></div>
                         </div>
-                        <div class="face-2d face-back">
-                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        <div class="face-2d face-back" data-face="B">
+                            <div class="sticker" data-idx="0"></div><div class="sticker" data-idx="1"></div><div class="sticker" data-idx="2"></div>
+                            <div class="sticker" data-idx="3"></div><div class="sticker" data-idx="4"></div><div class="sticker" data-idx="5"></div>
+                            <div class="sticker" data-idx="6"></div><div class="sticker" data-idx="7"></div><div class="sticker" data-idx="8"></div>
                         </div>
-                        <div class="face-2d face-down">
-                            <div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div><div class="sticker"></div>
+                        <div class="face-2d face-down" data-face="D">
+                            <div class="sticker" data-idx="0"></div><div class="sticker" data-idx="1"></div><div class="sticker" data-idx="2"></div>
+                            <div class="sticker" data-idx="3"></div><div class="sticker" data-idx="4"></div><div class="sticker" data-idx="5"></div>
+                            <div class="sticker" data-idx="6"></div><div class="sticker" data-idx="7"></div><div class="sticker" data-idx="8"></div>
                         </div>
                     </div>
                 </div>
@@ -215,7 +233,6 @@
 
         </div>
     </main>
-
     <script src="app.js"></script>
 </body>
 </html>

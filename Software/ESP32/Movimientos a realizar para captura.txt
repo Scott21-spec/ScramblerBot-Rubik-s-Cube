@@ -1,0 +1,33 @@
+Foto
+Arriba: de abajo a arriba, de derecha a izquierda
+
+Volteo
+Foto
+Atras: de arriba a abajo, de izquierda a derecha
+
+Volteo
+Foto
+Abajo: de abajo a arriba, de derecha a izquierda
+
+Volteo
+Foto
+Frente: de abajo a arriba, de derecha a izquierda
+
+Giro izquierda
+Volteo
+Giro centro
+Foto
+Derecha: de abajo a arriba, de derecha a izquierda
+
+Volteo
+Volteo
+Foto
+Izquierda: de arriba a abajo, de izquierda a derecha
+
+
+Giro izquierda
+Volteo
+Giro centro
+Volteo x3
+
+Preparado para realizar los movimientos calculados por kociemba

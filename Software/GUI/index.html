@@ -118,65 +118,137 @@
                 <!-- Modo: AJUSTES -->
                 <div id="view-ajustes" class="view">
                     
-                    <!-- Contenedor del cubo 3D -->
-                    <div class="cube-container">
-                        <div class="scene">
-                            <div class="cube-3d" id="cube-3d-ajustes"></div>
-                        </div>
-                        
-                        <!-- Boton Iniciar -->
-                        <button class="start-circular-btn" onclick="startProcess('ajustes')">▶</button>
+                    <!-- Columna Izquierda (Cubo 3D + Menú Desplegable abajo) -->
+                    <div class="ajustes-left-panel">
 
-                        <!-- Boton para desplegar 2D -->
-                        <button class="unfold-btn" onclick="toggleUnfold()">↕️</button>
+                        <!-- Caja Gris del Cubo 3D -->
+                        <div class="cube-container">
+                            <div class="scene">
+                                <div class="cube-3d" id="cube-3d-ajustes"></div>
+                            </div>
+
+                            <!-- Botón Iniciar Escaneo -->
+                            <button class="start-circular-btn" onclick="startProcess('ajustes')" title="Escanear Cubo">▶</button>
+
+                            <!-- Botón para desplegar 2D -->
+                            <button class="unfold-btn" onclick="toggleUnfold()" title="Ver 2D">↕️</button>
+                        </div>
+
+                        <!-- Barra de Menú Desplegable y Ejecutar (Fuera de la caja gris) -->
+                        <div class="ajustes-move-bar">
+                            <div class="custom-dropdown" id="dropdown-ajustes">
+                                <button class="dropdown-trigger" onclick="toggleDropdownAjustes(event)">
+                                    <span id="selected-move-text">Seleccione un movimiento...</span>
+                                    <span class="arrow">▲</span>
+                                </button>
+                                <div class="dropdown-menu hidden" id="dropdown-menu-ajustes">
+                                    <div class="dropdown-item-submenu">
+                                        <span class="item-text">U (Superior)</span>
+                                        <span class="chevron">▶</span>
+                                        <div class="submenu">
+                                            <div class="submenu-option" onclick="selectMove('U')">U</div>
+                                            <div class="submenu-option" onclick="selectMove('U\'')">U'</div>
+                                            <div class="submenu-option" onclick="selectMove('U2')">U2</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item-submenu">
+                                        <span class="item-text">L (Izquierda)</span>
+                                        <span class="chevron">▶</span>
+                                        <div class="submenu">
+                                            <div class="submenu-option" onclick="selectMove('L')">L</div>
+                                            <div class="submenu-option" onclick="selectMove('L\'')">L'</div>
+                                            <div class="submenu-option" onclick="selectMove('L2')">L2</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item-submenu">
+                                        <span class="item-text">F (Frente)</span>
+                                        <span class="chevron">▶</span>
+                                        <div class="submenu">
+                                            <div class="submenu-option" onclick="selectMove('F')">F</div>
+                                            <div class="submenu-option" onclick="selectMove('F\'')">F'</div>
+                                            <div class="submenu-option" onclick="selectMove('F2')">F2</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item-submenu">
+                                        <span class="item-text">R (Derecha)</span>
+                                        <span class="chevron">▶</span>
+                                        <div class="submenu">
+                                            <div class="submenu-option" onclick="selectMove('R')">R</div>
+                                            <div class="submenu-option" onclick="selectMove('R\'')">R'</div>
+                                            <div class="submenu-option" onclick="selectMove('R2')">R2</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item-submenu">
+                                        <span class="item-text">B (Atrás)</span>
+                                        <span class="chevron">▶</span>
+                                        <div class="submenu">
+                                            <div class="submenu-option" onclick="selectMove('B')">B</div>
+                                            <div class="submenu-option" onclick="selectMove('B\'')">B'</div>
+                                            <div class="submenu-option" onclick="selectMove('B2')">B2</div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-item-submenu">
+                                        <span class="item-text">D (Abajo)</span>
+                                        <span class="chevron">▶</span>
+                                        <div class="submenu">
+                                            <div class="submenu-option" onclick="selectMove('D')">D</div>
+                                            <div class="submenu-option" onclick="selectMove('D\'')">D'</div>
+                                            <div class="submenu-option" onclick="selectMove('D2')">D2</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botón de Play para ejecutar el movimiento -->
+                            <button class="btn-play-move" onclick="ejecutarMovimientoAjustes()" title="Ejecutar Movimiento">▶</button>
+                        </div>
+
                     </div>
-                    
-                    <!-- Panel de Ajuste de Servos -->
+
+                    <!-- Panel de Ajuste de Servos (Columna Derecha) -->
                     <div class="servo-controls-panel">
-                        <!-- Cuadro del Servo Inferior -->
                         <div class="servo-card">
                             <h3>SERVO INFERIOR (Base)</h3>
                             <div class="servo-pos-row">
-                                <button class="servo-btn" onclick="testServo('inferior', 'derecha')">DERECHA</button>
+                                <button class="servo-btn" onclick="testServo('Inferior', 'Derecha')">DERECHA</button>
                                 <input type="range" class="servo-slider" id="slider-inf-der" min="0" max="180" value="0" oninput="syncAngle('inf-der', this.value)">
                                 <input type="number" class="servo-input" id="input-inf-der" min="0" max="180" value="0" oninput="syncAngle('inf-der', this.value)">
                                 <span class="deg-symbol">°</span>
                             </div>
 
                             <div class="servo-pos-row">
-                                <button class="servo-btn" onclick="testServo('inferior', 'centro')">CENTRO</button>
+                                <button class="servo-btn" onclick="testServo('Inferior', 'Centro')">CENTRO</button>
                                 <input type="range" class="servo-slider" id="slider-inf-cen" min="0" max="180" value="90" oninput="syncAngle('inf-cen', this.value)">
                                 <input type="number" class="servo-input" id="input-inf-cen" min="0" max="180" value="90" oninput="syncAngle('inf-cen', this.value)">
                                 <span class="deg-symbol">°</span>
                             </div>
 
                             <div class="servo-pos-row">
-                                <button class="servo-btn" onclick="testServo('inferior', 'izquierda')">IZQUIERDA</button>
+                                <button class="servo-btn" onclick="testServo('Inferior', 'Izquierda')">IZQUIERDA</button>
                                 <input type="range" class="servo-slider" id="slider-inf-izq" min="0" max="180" value="180" oninput="syncAngle('inf-izq', this.value)">
                                 <input type="number" class="servo-input" id="input-inf-izq" min="0" max="180" value="180" oninput="syncAngle('inf-izq', this.value)">
                                 <span class="deg-symbol">°</span>
                             </div>
                         </div>
 
-                        <!-- Cuadro del Servo Superior -->
                         <div class="servo-card">
                             <h3>SERVO SUPERIOR (Brazo)</h3>
                             <div class="servo-pos-row">
-                                <button class="servo-btn" onclick="testServo('superior', 'abajo')">ABAJO</button>
+                                <button class="servo-btn" onclick="testServo('Superior', 'Abajo')">ABAJO</button>
                                 <input type="range" class="servo-slider" id="slider-sup-aba" min="0" max="180" value="0" oninput="syncAngle('sup-aba', this.value)">
                                 <input type="number" class="servo-input" id="input-sup-aba" min="0" max="180" value="0" oninput="syncAngle('sup-aba', this.value)">
                                 <span class="deg-symbol">°</span>
                             </div>
 
                             <div class="servo-pos-row">
-                                <button class="servo-btn" onclick="testServo('superior', 'arriba')">ARRIBA</button>
+                                <button class="servo-btn" onclick="testServo('Superior', 'Arriba')">ARRIBA</button>
                                 <input type="range" class="servo-slider" id="slider-sup-arr" min="0" max="180" value="90" oninput="syncAngle('sup-arr', this.value)">
                                 <input type="number" class="servo-input" id="input-sup-arr" min="0" max="180" value="90" oninput="syncAngle('sup-arr', this.value)">
                                 <span class="deg-symbol">°</span>
                             </div>
 
                             <div class="servo-pos-row">
-                                <button class="servo-btn" onclick="testServo('superior', 'volteo')">VOLTEO</button>
+                                <button class="servo-btn" onclick="testServo('Superior', 'Volteo')">VOLTEO</button>
                                 <input type="range" class="servo-slider" id="slider-sup-vol" min="0" max="180" value="180" oninput="syncAngle('sup-vol', this.value)">
                                 <input type="number" class="servo-input" id="input-sup-vol" min="0" max="180" value="180" oninput="syncAngle('sup-vol', this.value)">
                                 <span class="deg-symbol">°</span>

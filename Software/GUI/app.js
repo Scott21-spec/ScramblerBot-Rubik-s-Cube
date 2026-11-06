@@ -38,10 +38,12 @@ let isConnected = false;
 let isEnded = false;
 let isMoving = false;
 let isUnfolded = false;
+let isCubeScan = false;
 let previousMousePosition = { x: 0, y: 0 };
 let cubeRotations = { x: -20, y: -45 };
 let ws;
 let currentMezcla = "";
+let movimientoAjustesSeleccionado = "";
 
 // ---------------- GENERADOR MOTOR 3D ----------------
 function initCube(containerId) {
@@ -130,6 +132,12 @@ function conectarServidor() {
                 const modo = respuesta.modo || 'resolver';
                 document.getElementById(`progress-text-${modo}`).innerText = respuesta.progreso;
                 document.getElementById(`progress-fill-${modo}`).style.width = `${(respuesta.progreso / respuesta.total) * 100}%`;
+            }
+        }
+        else if (respuesta.tipo === "cargar_servos") {
+            const config = respuesta.config;
+            for (const [id, angulo] of Object.entries(config)) {
+                actualizarDOMServo(id, angulo);
             }
         }
         else if (respuesta.tipo === "proceso_completado") {
@@ -221,6 +229,7 @@ function animarMovimientoYCubo(movimiento, nuevoEstado) {
 function setMode(modeId) {
     if (isUnfolded || isMoving) return;
     isEnded = false;
+    isCubeScan = false;
     currentMezcla = "";
     document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
     document.getElementById(`btn-${modeId}`).classList.add('active');
@@ -237,11 +246,14 @@ function setMode(modeId) {
 
     document.getElementById('btn-historial').style.visibility = (modeId === 'ajustes') ? 'hidden' : 'visible';
 
+    if (isConnected && ws && ws.readyState === WebSocket.OPEN) {
+        ws.send(JSON.stringify({ comando: "resetear_orientacion" }));
+    }
+
     // NUEVO: Resetear al estado resuelto si entramos a resolver o ajustes
     if (modeId === 'resolver' || modeId === 'ajustes') {
         renderizarEstadoCubo(ESTADO_RESUELTO);
     }
-
     // Resetear vistas al entrar a mezclar
     if (modeId === 'mezclar') {
         document.getElementById('scramble-controls').classList.remove('hidden');
@@ -290,6 +302,7 @@ function startProcess(mode) {
         if (!currentMezcla) return logTerminal("Error: Genera o sube una secuencia primero.");
         ws.send(JSON.stringify({ comando: "iniciar_mezclar", secuencia: currentMezcla }));
     } else if (mode === 'ajustes') {
+        isCubeScan = true;
         ws.send(JSON.stringify({ comando: "capturar_cubo" }));
     }
 }
@@ -306,19 +319,85 @@ function viewProcess(mode) {
 function downloadWCA() { if (isConnected) ws.send(JSON.stringify({ comando: "abrir_explorador" })); }
 function generateWCA() { if (isConnected) ws.send(JSON.stringify({ comando: "generar_movimientos" })); }
 
+// Actualiza únicamente la pantalla sin enviar evento WebSocket (para evitar bucles al cargar)
+function actualizarDOMServo(id, value) {
+    let cleanValue = Math.max(0, Math.min(180, Number(value)));
+    const slider = document.getElementById(`slider-${id}`);
+    const input = document.getElementById(`input-${id}`);
+    if (slider) slider.value = cleanValue;
+    if (input) input.value = cleanValue;
+}
+
+// Se ejecuta al mover los sliders/inputs y guarda en Python
 function syncAngle(id, value) {
     let cleanValue = Math.max(0, Math.min(180, Number(value)));
-    document.getElementById(`slider-${id}`).value = cleanValue;
-    document.getElementById(`input-${id}`).value = cleanValue;
+    actualizarDOMServo(id, cleanValue);
+
+    if (isConnected) {
+        ws.send(JSON.stringify({
+            comando: "guardar_servo",
+            clave: id,
+            angulo: cleanValue
+        }));
+    }
 }
 
 function testServo(servoName, positionName) {
     if (!isConnected) return;
-    const idMap = { 'inferior-derecha': 'inf-der', 'inferior-centro': 'inf-cen', 'inferior-izquierda': 'inf-izq', 'superior-abajo': 'sup-aba', 'superior-arriba': 'sup-arr', 'superior-volteo': 'sup-vol' };
-    const angle = document.getElementById(`input-${idMap[`${servoName}-${positionName}`]}`).value;
-    ws.send(JSON.stringify({ comando: "mover_servo", servo: servoName, angulo: parseInt(angle) }));
+    const idMap = {
+        'Inferior-Derecha': 'inf-der', 'Inferior-Centro': 'inf-cen', 'Inferior-Izquierda': 'inf-izq',
+        'Superior-Abajo': 'sup-aba', 'Superior-Arriba': 'sup-arr', 'Superior-Volteo': 'sup-vol'
+    };
+    const key = idMap[`${servoName}-${positionName}`];
+    const angle = document.getElementById(`input-${key}`).value;
+
+    ws.send(JSON.stringify({
+        comando: "mover_servo",
+        clave: key,
+        servo: servoName,
+        angulo: parseInt(angle)
+    }));
 }
 
+// Abrir / Cerrar Dropdown
+function toggleDropdownAjustes(event) {
+    event.stopPropagation();
+    const menu = document.getElementById('dropdown-menu-ajustes');
+    if (menu) menu.classList.toggle('hidden');
+}
+
+// Cerrar si hace clic fuera
+document.addEventListener('click', (e) => {
+    const dropdown = document.getElementById('dropdown-ajustes');
+    const menu = document.getElementById('dropdown-menu-ajustes');
+    if (menu && !menu.classList.contains('hidden') && dropdown && !dropdown.contains(e.target)) {
+        menu.classList.add('hidden');
+    }
+});
+
+// Seleccionar opción
+function selectMove(mov) {
+    movimientoAjustesSeleccionado = mov;
+    document.getElementById('selected-move-text').innerText = `Movimiento: ${mov}`;
+    const menu = document.getElementById('dropdown-menu-ajustes');
+    if (menu) menu.classList.add('hidden');
+}
+
+// Ejecutar movimiento
+function ejecutarMovimientoAjustes() {
+    if (!isConnected) return logTerminal("Error: Sin conexión con el servidor.");
+    if (!movimientoAjustesSeleccionado) {
+        return logTerminal("Error: Seleccione un movimiento primero.");
+    }
+
+    ws.send(JSON.stringify({
+        comando: "ejecutar_movimiento_ajustes",
+        movimiento: movimientoAjustesSeleccionado,
+        scan: isCubeScan
+    }));
+}
+
+// Desplegar cubo
 function toggleUnfold() {
     document.getElementById('unfold-modal').classList.toggle('hidden');
     isUnfolded = !isUnfolded;

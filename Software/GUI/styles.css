@@ -6,7 +6,6 @@
     --neon-resolver: #00FF66;
     --neon-mezclar: #FF6600;
     --neon-ajustes: #FFEE00;
-    --neon-about: #00E5FF;
     --disconnected: #FF0055;
     --active-neon: #00FF66;
 }
@@ -92,33 +91,30 @@ body { background-color: var(--bg-dark); color: var(--text-main); display: flex;
 .scene:active { cursor: grabbing; }
 .cube-3d {
     width: 0; height: 0; position: relative;
-    top: 50%; left: 50%; /* Centrar matemáticamente en la escena */
+    top: 50%; left: 50%;
     transform-style: preserve-3d;
     transform: rotateX(-20deg) rotateY(-45deg);
 }
 
-/* La pieza tridimensional base (56x56 px para el margen visual) */
 .cubie {
     position: absolute; width: 56px; height: 56px;
-    margin-left: -28px; margin-top: -28px; /* Anclar el origen al centro */
+    margin-left: -28px; margin-top: -28px;
     transform-style: preserve-3d;
 }
 
-/* Las tapas de colores pegadas en cada pieza */
 .cubie-face {
     position: absolute; width: 52px; height: 52px;
-    left: 2px; top: 2px; /* Espacio para las ranuras negras */
+    left: 2px; top: 2px;
     background-color: #000; border-radius: 4px; border: 2px solid #000;
 }
 
-/* Clase vital para las animaciones conjuntas */
 .pivot {
     position: absolute; width: 0; height: 0;
     transform-style: preserve-3d;
     transform: rotate3d(1,1,1,0deg);
 }
 
-/* ---------------- ESTRUCTURA 2D MODAL (No tocada) ---------------- */
+/* ---------------- ESTRUCTURA 2D MODAL ---------------- */
 .modal { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 100; border-radius: inherit; }
 .modal.hidden { display: none; }
 .modal-content { background: var(--bg-panel); padding: 30px; border-radius: 15px; position: relative; border: 2px solid var(--active-neon); box-shadow: 0 0 20px var(--active-neon); }
@@ -136,3 +132,157 @@ body { background-color: var(--bg-dark); color: var(--text-main); display: flex;
 .terminal-wrapper { background-color: #000; padding: 3px; width: 100%; margin-top: 20px; }
 .terminal-bar { background-color: #3a3d45; border: 2px solid #FFF; padding: 15px 25px; }
 #terminal-output { font-weight: 900; font-size: 16px; color: #FFF; }
+
+/* --- MODO AJUSTES --- */
+.ajustes-left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 400px;
+}
+
+.ajustes-move-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    position: relative;
+    z-index: 50;
+}
+
+.ajustes-move-bar .custom-dropdown {
+    flex: 1;
+    position: relative;
+}
+
+.ajustes-move-bar .dropdown-trigger {
+    width: 100%;
+    background-color: var(--bg-panel);
+    color: #FFFFFF;
+    border: 1px solid var(--neon-ajustes);
+    border-radius: 10px;
+    padding: 12px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(255, 238, 0, 0.2);
+    transition: all 0.2s;
+}
+
+.ajustes-move-bar .dropdown-trigger:hover {
+    box-shadow: 0 0 10px var(--neon-ajustes);
+}
+
+.ajustes-move-bar .dropdown-trigger .arrow {
+    font-size: 10px;
+    color: var(--neon-ajustes);
+}
+
+.ajustes-move-bar .dropdown-menu {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 8px;
+    width: 100%;
+    background-color: #1a1c23;
+    border: 1px solid var(--neon-ajustes);
+    border-radius: 10px;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.8);
+    z-index: 100;
+    padding: 5px 0;
+}
+
+.ajustes-move-bar .dropdown-item-submenu {
+    position: relative;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.ajustes-move-bar .dropdown-item-submenu:hover {
+    background-color: #2a2d38;
+    color: var(--neon-ajustes);
+}
+
+.ajustes-move-bar .dropdown-item-submenu .chevron {
+    font-size: 10px;
+    color: var(--neon-ajustes);
+}
+
+.ajustes-move-bar .submenu {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: 0; /* Se elimina el espacio vacío que provocaba perder el hover */
+    width: 70px;
+    background-color: #1a1c23;
+    border: 1px solid var(--neon-ajustes);
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    box-shadow: 4px 4px 15px rgba(0,0,0,0.8);
+    z-index: 101;
+    overflow: hidden;
+}
+
+/* Mantiene el desplegable visible al pasar sobre el submenú */
+.ajustes-move-bar .dropdown-item-submenu:hover .submenu,
+.ajustes-move-bar .submenu:hover {
+    display: flex;
+}
+
+.ajustes-move-bar .submenu-option {
+    padding: 10px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ajustes-move-bar .submenu-option:hover {
+    background-color: var(--neon-ajustes);
+    color: #000000;
+}
+
+.ajustes-move-bar .btn-play-move {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: #00b84c;
+    color: #FFFFFF;
+    border: 2px solid #000;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px #00b84c;
+    transition: transform 0.2s;
+}
+
+.ajustes-move-bar .btn-play-move:hover {
+    transform: scale(1.08);
+}
+
+/* Puente de contacto invisible a la derecha para suavizar el desplazamiento diagonal del mouse */
+.ajustes-move-bar .dropdown-item-submenu::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 10px;
+    height: 100%;
+}
